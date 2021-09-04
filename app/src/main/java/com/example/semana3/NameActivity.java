@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,10 +26,13 @@ public class NameActivity extends AppCompatActivity {
 
         continuar.setOnClickListener(
                 (view) -> {
+                    Log.e("Boton","funciono");
                     if (!nombre.getText().toString().equals("")) {
                         nombreString = nombre.getText().toString();
                         Intent i = new Intent(this, NotasInputActivity.class);
-                        i.putExtra("nombre", nombreString);
+                        Intent iN = new Intent(this, ResultadoActivity.class);
+                        iN.putExtra("nombre", nombreString);
+                        startActivity(i);
                     } else {
                         Toast.makeText(this, "Ponga su nombre para continuar", Toast.LENGTH_SHORT).show();
                     }
@@ -38,7 +42,9 @@ public class NameActivity extends AppCompatActivity {
 
         config.setOnClickListener(
                 (view)->{
+
                     Intent iConf = new Intent(this, ConfiguracionActivity.class);
+                    startActivity(iConf);
                 }
         );
     }

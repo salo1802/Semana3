@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,12 +17,11 @@ public class ResultadoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-       nota = "" + getIntent().getExtras().getDouble("nota");
+        setContentView(R.layout.activity_resultado);
+        nota = "" + getIntent().getExtras().getDouble("nota");
         nombre = getIntent().getExtras().getString("nombre");
         notatexto = findViewById(R.id.notaFinal);
         saludo = findViewById(R.id.saludoNombre);
-
         saludo.setText("Hola, "+ nombre + ". Tu nota final es de:");
         notatexto.setText(nota);
 
@@ -30,6 +30,7 @@ public class ResultadoActivity extends AppCompatActivity {
         recalcular.setOnClickListener(
                 (view)->{
                     Intent i =new Intent(this, NameActivity.class);
+                    startActivity(i);
                 }
         );
 
